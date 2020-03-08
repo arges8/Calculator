@@ -1,11 +1,11 @@
-package com.calc.helper;
+package com.calc.output;
 
 import javafx.scene.text.Text;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class CachedTextUpdater implements OutputCreator {
+public class CachedTextUpdater implements OutputTextUpdater {
     private static volatile CachedTextUpdater instance;
     private Text cachedText;
     private StringBuilder currentEquation;
@@ -17,14 +17,14 @@ public class CachedTextUpdater implements OutputCreator {
         currentEquation = new StringBuilder();
     }
 
-    public static CachedTextUpdater getInstance() {
+    public static CachedTextUpdater getInstance() throws TextUpdaterExistsException {
         if(instance != null)
             return instance;
 
-        throw new AssertionError("Instance not initialized. Use init() to create one.");
+        throw new TextUpdaterExistsException(false, TextUpdaterType.CACHED);
     }
 
-    public static CachedTextUpdater init(Text text) {
+    public static CachedTextUpdater init(Text text) throws TextUpdaterExistsException {
         if(instance == null) {
             synchronized (CachedTextUpdater.class) {
                 if(instance == null) {
@@ -33,7 +33,7 @@ public class CachedTextUpdater implements OutputCreator {
                 }
             }
         }
-        throw new AssertionError("Instance already initialized");
+        throw new TextUpdaterExistsException(true, TextUpdaterType.CACHED);
     }
 
     @Override

@@ -1,8 +1,8 @@
-package com.calc.helper;
+package com.calc.output;
 
 import javafx.scene.text.Text;
 
-public class NumericTextUpdater implements OutputCreator {
+public class NumericTextUpdater implements OutputTextUpdater {
     private static volatile NumericTextUpdater instance;
     private Text numericText;
 
@@ -10,14 +10,14 @@ public class NumericTextUpdater implements OutputCreator {
         this.numericText = numericText;
     }
 
-    public static NumericTextUpdater getInstance() throws AssertionError {
+    public static NumericTextUpdater getInstance() throws TextUpdaterExistsException {
         if(instance != null)
             return instance;
 
-        throw new AssertionError("Instance not initialized. Use init() to create one.");
+        throw new TextUpdaterExistsException(false, TextUpdaterType.NUMERIC);
     }
 
-    public static NumericTextUpdater init(Text text) throws AssertionError {
+    public static NumericTextUpdater init(Text text) throws TextUpdaterExistsException {
         if(instance == null) {
             synchronized (NumericTextUpdater.class) {
                 if(instance == null) {
@@ -26,7 +26,7 @@ public class NumericTextUpdater implements OutputCreator {
                 }
             }
         }
-        throw new AssertionError("Instance already initialized");
+        throw new TextUpdaterExistsException(true, TextUpdaterType.NUMERIC);
     }
 
     @Override

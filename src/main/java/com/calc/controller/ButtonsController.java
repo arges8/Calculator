@@ -1,8 +1,8 @@
 package com.calc.controller;
 
-import com.calc.helper.CachedTextUpdater;
-import com.calc.helper.NumericTextUpdater;
-import com.calc.helper.OperatorTextUpdater;
+import com.calc.output.CachedTextUpdater;
+import com.calc.output.NumericTextUpdater;
+import com.calc.output.OperatorTextUpdater;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
@@ -29,8 +29,6 @@ public class ButtonsController {
     @FXML
     private void handleNumberButton(ActionEvent event) {
         String number = ((Button)event.getSource()).getText();
-        NumericTextUpdater numericTextUpdater = NumericTextUpdater.getInstance();
-        numericTextUpdater.updateText(number);
     }
 
     @FXML

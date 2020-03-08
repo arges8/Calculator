@@ -1,8 +1,8 @@
-package com.calc.helper;
+package com.calc.output;
 
 import javafx.scene.text.Text;
 
-public class OperatorTextUpdater implements OutputCreator {
+public class OperatorTextUpdater implements OutputTextUpdater {
     private static volatile OperatorTextUpdater instance;
     private Text operatorText;
 
@@ -10,14 +10,14 @@ public class OperatorTextUpdater implements OutputCreator {
         this.operatorText = operatorText;
     }
 
-    public static OperatorTextUpdater getInstance() {
+    public static OperatorTextUpdater getInstance() throws TextUpdaterExistsException {
         if(instance != null)
             return instance;
 
-        throw new AssertionError("Instance not initialized. Use init() to create one.");
+        throw new TextUpdaterExistsException(false, TextUpdaterType.OPERATOR);
     }
 
-    public static OperatorTextUpdater init(Text text) {
+    public static OperatorTextUpdater init(Text text) throws TextUpdaterExistsException {
         if(instance == null) {
             synchronized (OperatorTextUpdater.class) {
                 if(instance == null) {
@@ -26,7 +26,7 @@ public class OperatorTextUpdater implements OutputCreator {
                 }
             }
         }
-        throw new AssertionError("Instance already initialized");
+        throw new TextUpdaterExistsException(true, TextUpdaterType.OPERATOR);
     }
 
     @Override
