@@ -10,7 +10,14 @@ public class NumericTextUpdater implements OutputTextUpdater {
 
     @Override
     public void updateText(String text) {
-        String updatedNumberText = textUpdaterFacade.getNumericText() + text;
+        String currentNumericText = textUpdaterFacade.getNumericText();
+        String updatedNumberText;
+        if(currentNumericText.equals("0")) {
+            updatedNumberText = text;
+        } else {
+            updatedNumberText = textUpdaterFacade.getNumericText() + text;
+        }
+
         textUpdaterFacade.setNumericText(updatedNumberText);
     }
 

@@ -1,6 +1,7 @@
 package com.calc.controller;
 
 import com.calc.output.OutputCreatorFacade;
+import com.calc.output.TextUpdaterFacade;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
@@ -21,7 +22,8 @@ public class ButtonsController {
 
     @FXML
     private void initialize() {
-        outputCreatorFacade = new OutputCreatorFacade(numericText, operatorText, cachedText);
+        TextUpdaterFacade.init(numericText, operatorText, cachedText).setNumericText("0");
+        outputCreatorFacade = new OutputCreatorFacade();
     }
 
     @FXML
@@ -33,6 +35,6 @@ public class ButtonsController {
     @FXML
     private void handleOperatorButton(ActionEvent event) {
         String operator = ((Button)event.getSource()).getText();
-
+        outputCreatorFacade.createOutputForOperatorButton(operator);
     }
 }

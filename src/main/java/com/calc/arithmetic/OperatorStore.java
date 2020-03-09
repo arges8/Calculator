@@ -27,4 +27,9 @@ public class OperatorStore implements Store<CalculatorOperator> {
     public void setCurrent(CalculatorOperator operatorToStore) {
         this.currentOperator = operatorToStore;
     }
+
+    @Override
+    public void setDefault() {
+        this.currentOperator = CalculatorOperator.NONE;
+    }
 }

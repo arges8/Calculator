@@ -27,4 +27,9 @@ public class NumberStore implements Store<Double> {
     public void setCurrent(Double numberToStore) {
         this.currentNumber = numberToStore;
     }
+
+    @Override
+    public void setDefault() {
+        this.currentNumber = 0;
+    }
 }

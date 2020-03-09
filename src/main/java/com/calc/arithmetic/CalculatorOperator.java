@@ -1,7 +1,7 @@
 package com.calc.arithmetic;
 
 public enum CalculatorOperator {
-    DIVISION, MULTIPLICATION, ADDITION, SUBTRACTION, NONE;
+    DIVISION, MULTIPLICATION, SUBTRACTION, ADDITION, NONE;
 
     public static CalculatorOperator getOperator(String operator) {
         switch(operator) {
@@ -9,10 +9,10 @@ public enum CalculatorOperator {
                 return DIVISION;
             case "X":
                 return MULTIPLICATION;
-            case "+":
-                return ADDITION;
             case "-":
                 return SUBTRACTION;
+            case "+":
+                return ADDITION;
             case "":
                 return NONE;
             default:

@@ -38,7 +38,7 @@
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="84.0" text="/" GridPane.columnIndex="3">
+            <Button mnemonicParsing="false" onAction="#handleOperatorButton" prefHeight="91.0" prefWidth="84.0" text="/" GridPane.columnIndex="3">
                <font>
                   <Font size="28.0" />
                </font></Button>
@@ -54,7 +54,7 @@
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="84.0" text="X" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleOperatorButton" prefHeight="91.0" prefWidth="84.0" text="X" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font size="28.0" />
                </font></Button>
@@ -70,7 +70,7 @@
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="84.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#handleOperatorButton" prefHeight="91.0" prefWidth="84.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <font>
                   <Font size="28.0" />
                </font></Button>
@@ -78,7 +78,7 @@
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="84.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#handleOperatorButton" prefHeight="91.0" prefWidth="84.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <font>
                   <Font size="28.0" />
                </font></Button>
