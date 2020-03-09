@@ -1,8 +1,6 @@
 package com.calc.controller;
 
-import com.calc.output.CachedTextUpdater;
-import com.calc.output.NumericTextUpdater;
-import com.calc.output.OperatorTextUpdater;
+import com.calc.output.OutputCreatorFacade;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
@@ -19,16 +17,17 @@ public class ButtonsController {
     @FXML
     private Text cachedText;
 
+    private OutputCreatorFacade outputCreatorFacade;
+
     @FXML
     private void initialize() {
-        NumericTextUpdater.init(numericText);
-        OperatorTextUpdater.init(operatorText);
-        CachedTextUpdater.init(cachedText);
+        outputCreatorFacade = new OutputCreatorFacade(numericText, operatorText, cachedText);
     }
 
     @FXML
     private void handleNumberButton(ActionEvent event) {
         String number = ((Button)event.getSource()).getText();
+        outputCreatorFacade.createOutputForNumericButton(number);
     }
 
     @FXML
