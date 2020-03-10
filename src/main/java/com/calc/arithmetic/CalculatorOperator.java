@@ -13,10 +13,8 @@ public enum CalculatorOperator {
                 return SUBTRACTION;
             case "+":
                 return ADDITION;
-            case "":
-                return NONE;
             default:
-                throw new IllegalArgumentException("Wrong operator");
+                return NONE;
         }
 
     }

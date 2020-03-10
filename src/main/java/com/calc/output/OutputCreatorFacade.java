@@ -3,40 +3,53 @@ package com.calc.output;
 import com.calc.arithmetic.CalculatorOperator;
 import com.calc.arithmetic.OperationExecutor;
 import com.calc.arithmetic.OperatorStore;
+import com.calc.arithmetic.ProxyCacheStore;
 
 public class OutputCreatorFacade {
     private TextUpdaterFacade textUpdaterFacade;
-    private NumericTextUpdater numericTextUpdater;
-    private OperatorTextUpdater operatorTextUpdater;
-    private CachedTextUpdater cachedTextUpdater;
     private OperationExecutor operationExecutor;
     private OperatorStore operatorStore;
+    private ProxyCacheStore cacheStore;
+    private boolean operatorUsedRecently;
 
     public OutputCreatorFacade() {
         textUpdaterFacade = TextUpdaterFacade.getInstance();
-        numericTextUpdater = new NumericTextUpdater();
-        operatorTextUpdater = new OperatorTextUpdater();
-        cachedTextUpdater = new CachedTextUpdater();
         operationExecutor = new OperationExecutor();
         operatorStore = OperatorStore.getInstance();
+        cacheStore = ProxyCacheStore.getInstance();
+        operatorUsedRecently = false;
     }
 
     public void createOutputForNumericButton(String number) {
-        numericTextUpdater.updateText(number);
+        if(operatorUsedRecently)
+            textUpdaterFacade.setNumericText(number);
+        else
+            textUpdaterFacade.updateNumericText(number);
+
+        operatorUsedRecently = false;
     }
 
     public void createOutputForOperatorButton(String operator) {
         // 1. check if there is numericText. If yes, execute operation declared before and add operator
         //  1.1 If not, change current operator to one passed as parameter
         // 2. update cachedText
-        String currentNumberText = textUpdaterFacade.getNumericText();
-        if(!currentNumberText.equals("0")) {
+        StringBuilder cacheToAdd = new StringBuilder();
+        if(!operatorUsedRecently) {
+            String currentNumberText = textUpdaterFacade.getNumericText();
             double currentNumber = Double.parseDouble(currentNumberText);
             operationExecutor.executeOperation(currentNumber);
-            textUpdaterFacade.setNumericText("0");
+            cacheToAdd.append(currentNumberText);
         }
         CalculatorOperator newOperator = CalculatorOperator.getOperator(operator);
         operatorStore.setCurrent(newOperator);
-        operatorTextUpdater.updateText(operator);
+        textUpdaterFacade.setOperatorText(operator);
+
+        cacheToAdd.append(operator);
+        String fullCacheToAdd = cacheToAdd.toString();
+        cacheStore.updateCurrent(fullCacheToAdd);
+        String fullCache = cacheStore.getCurrent();
+        textUpdaterFacade.setCachedText(fullCache);
+
+        operatorUsedRecently = true;
     }
 }
