@@ -1,6 +1,6 @@
 package com.calc.output;
 
-import com.calc.wrapper.OperationWrapper;
+import com.calc.arithmetic.operation.OperationWrapper;
 
 public class OutputCreatorFacade {
     private TextUpdaterFacade textUpdaterFacade;

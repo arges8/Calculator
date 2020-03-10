@@ -1,4 +1,6 @@
-package com.calc.arithmetic;
+package com.calc.arithmetic.store;
+
+import com.calc.arithmetic.CalculatorOperator;
 
 import java.util.LinkedList;
 import java.util.List;

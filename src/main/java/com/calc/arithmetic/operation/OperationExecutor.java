@@ -1,12 +1,14 @@
-package com.calc.arithmetic;
+package com.calc.arithmetic.operation;
 
-public class OperationExecutor {
+import com.calc.arithmetic.CalculatorOperator;
+
+class OperationExecutor {
 
     public OperationExecutor() {
 
     }
 
-    public double executeOperation(double numberStored, double secondNumber, CalculatorOperator operator) {
+    double executeOperation(double numberStored, double secondNumber, CalculatorOperator operator) {
         double resultOfOperation = 0;
 
         switch(operator) {

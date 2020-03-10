@@ -1,6 +1,9 @@
-package com.calc.wrapper;
+package com.calc.arithmetic.operation;
 
 import com.calc.arithmetic.*;
+import com.calc.arithmetic.store.NumberStore;
+import com.calc.arithmetic.store.OperatorStore;
+import com.calc.arithmetic.store.ProxyCacheStore;
 
 public class OperationWrapper {
     private NumberStore numberStore;

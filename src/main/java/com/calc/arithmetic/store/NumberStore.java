@@ -1,4 +1,4 @@
-package com.calc.arithmetic;
+package com.calc.arithmetic.store;
 
 public class NumberStore implements Store<Double> {
     private static volatile NumberStore instance;

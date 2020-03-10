@@ -1,4 +1,6 @@
-package com.calc.arithmetic;
+package com.calc.arithmetic.store;
+
+import com.calc.arithmetic.CalculatorOperator;
 
 public class OperatorStore implements Store<CalculatorOperator> {
     private static volatile OperatorStore instance;

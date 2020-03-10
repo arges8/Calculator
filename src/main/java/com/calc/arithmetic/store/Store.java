@@ -1,6 +1,6 @@
-package com.calc.arithmetic;
+package com.calc.arithmetic.store;
 
-public interface Store<T> {
+interface Store<T> {
     T getCurrent();
     void setCurrent(T objectToStore);
     void setDefault();

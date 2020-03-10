@@ -1,4 +1,4 @@
-package com.calc.arithmetic;
+package com.calc.arithmetic.store;
 
 class CacheStore implements Store<String>{
     private static volatile CacheStore instance;
