@@ -20,10 +20,10 @@ public class OperationWrapper {
     public String executeOperationAndUpdateAllStores(String number, String operator) {
         double storedNumber = numberStore.getCurrent();
         double secondNumber = Double.parseDouble(number);
-        CalculatorOperator givenOperator = CalculatorOperator.getOperator(operator);
-        double result = operationExecutor.executeOperation(storedNumber, secondNumber, givenOperator);
+        CalculatorOperator storedOperator = operatorStore.getCurrent();
+        double result = operationExecutor.executeOperation(storedNumber, secondNumber, storedOperator);
         numberStore.setCurrent(result);
-        cacheTextToAdd.append((int)result);
+        cacheTextToAdd.append(number);
         return updateOperatorAndCacheStores(operator);
     }
 
