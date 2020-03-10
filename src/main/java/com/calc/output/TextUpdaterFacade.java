@@ -41,10 +41,6 @@ public class TextUpdaterFacade {
         this.numericText.setText(numericText);
     }
 
-    /*
-        TODO: think of removing OutputTextUpdater implementations. Add what is necessarily to
-        NumberStore and OperatorStore, and maybe create CacheStore
-    */
     public void updateNumericText(String text) {
         String currentNumericText = numericText.getText();
         String updatedNumberText = "0".equals(currentNumericText) ? text : currentNumericText + text;

@@ -1,22 +1,15 @@
 package com.calc.output;
 
-import com.calc.arithmetic.CalculatorOperator;
-import com.calc.arithmetic.OperationExecutor;
-import com.calc.arithmetic.OperatorStore;
-import com.calc.arithmetic.ProxyCacheStore;
+import com.calc.wrapper.OperationWrapper;
 
 public class OutputCreatorFacade {
     private TextUpdaterFacade textUpdaterFacade;
-    private OperationExecutor operationExecutor;
-    private OperatorStore operatorStore;
-    private ProxyCacheStore cacheStore;
+    private OperationWrapper operationWrapper;
     private boolean operatorUsedRecently;
 
     public OutputCreatorFacade() {
         textUpdaterFacade = TextUpdaterFacade.getInstance();
-        operationExecutor = new OperationExecutor();
-        operatorStore = OperatorStore.getInstance();
-        cacheStore = ProxyCacheStore.getInstance();
+        operationWrapper = new OperationWrapper();
         operatorUsedRecently = false;
     }
 
@@ -30,26 +23,20 @@ public class OutputCreatorFacade {
     }
 
     public void createOutputForOperatorButton(String operator) {
-        // 1. check if there is numericText. If yes, execute operation declared before and add operator
-        //  1.1 If not, change current operator to one passed as parameter
-        // 2. update cachedText
-        StringBuilder cacheToAdd = new StringBuilder();
+        String cache;
         if(!operatorUsedRecently) {
             String currentNumberText = textUpdaterFacade.getNumericText();
-            double currentNumber = Double.parseDouble(currentNumberText);
-            operationExecutor.executeOperation(currentNumber);
-            cacheToAdd.append(currentNumberText);
+            cache = operationWrapper.executeOperationAndUpdateAllStores(currentNumberText, operator);
+        } else {
+            cache = operationWrapper.updateOperatorAndCacheStores(operator);
         }
-        CalculatorOperator newOperator = CalculatorOperator.getOperator(operator);
-        operatorStore.setCurrent(newOperator);
         textUpdaterFacade.setOperatorText(operator);
-
-        cacheToAdd.append(operator);
-        String fullCacheToAdd = cacheToAdd.toString();
-        cacheStore.updateCurrent(fullCacheToAdd);
-        String fullCache = cacheStore.getCurrent();
-        textUpdaterFacade.setCachedText(fullCache);
+        textUpdaterFacade.setCachedText(cache);
 
         operatorUsedRecently = true;
+    }
+
+    public void createOutputForEqualsButton() {
+
     }
 }

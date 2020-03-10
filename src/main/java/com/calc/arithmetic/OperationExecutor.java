@@ -1,17 +1,12 @@
 package com.calc.arithmetic;
 
 public class OperationExecutor {
-    private OperatorStore operatorStore;
-    private NumberStore numberStore;
 
     public OperationExecutor() {
-        operatorStore = OperatorStore.getInstance();
-        numberStore = NumberStore.getInstance();
+
     }
 
-    public void executeOperation(double secondNumber) {
-        CalculatorOperator operator = operatorStore.getCurrent();
-        double numberStored = numberStore.getCurrent();
+    public double executeOperation(double numberStored, double secondNumber, CalculatorOperator operator) {
         double resultOfOperation = 0;
 
         switch(operator) {
@@ -32,8 +27,8 @@ public class OperationExecutor {
                 resultOfOperation = secondNumber;
                 break;
         }
-        operatorStore.setDefault();
-        numberStore.setCurrent(resultOfOperation);
+
+        return resultOfOperation;
     }
 
 }

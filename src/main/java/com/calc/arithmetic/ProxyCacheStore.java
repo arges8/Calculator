@@ -29,8 +29,8 @@ public class ProxyCacheStore implements Store<String> {
     }
 
     @Override
-    public void setCurrent(String objectToStore) {
-        cacheStore.setCurrent(objectToStore);
+    public void setCurrent(String cacheToStore) {
+        cacheStore.setCurrent(cacheToStore);
     }
 
     @Override
