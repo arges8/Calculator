@@ -74,7 +74,7 @@
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button mnemonicParsing="false" prefHeight="91.0" prefWidth="84.0" text="=" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Button mnemonicParsing="false" onAction="#handleEqualsButton" prefHeight="91.0" prefWidth="84.0" text="=" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font size="28.0" />
                </font></Button>

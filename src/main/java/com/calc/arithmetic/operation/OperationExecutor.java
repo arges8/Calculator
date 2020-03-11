@@ -4,11 +4,7 @@ import com.calc.arithmetic.CalculatorOperator;
 
 class OperationExecutor {
 
-    public OperationExecutor() {
-
-    }
-
-    double executeOperation(double numberStored, double secondNumber, CalculatorOperator operator) {
+    static double executeOperation(double numberStored, double secondNumber, CalculatorOperator operator) {
         double resultOfOperation = 0;
 
         switch(operator) {

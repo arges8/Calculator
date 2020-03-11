@@ -37,4 +37,9 @@ public class ButtonsController {
         String operator = ((Button)event.getSource()).getText();
         outputCreatorFacade.createOutputForOperatorButton(operator);
     }
+
+    @FXML
+    private void handleEqualsButton(ActionEvent event) {
+        outputCreatorFacade.createOutputForEqualsButton();
+    }
 }

@@ -37,6 +37,15 @@ public class OutputCreatorFacade {
     }
 
     public void createOutputForEqualsButton() {
+        createOutputForOperatorButton("");
+        String result = operationWrapper.setAllStoresDefaultAndSaveCacheTextInHistory();
+        textUpdaterFacade.setCachedText("");
+        textUpdaterFacade.setOperatorText("");
+        textUpdaterFacade.setNumericText(result);
 
+        operatorUsedRecently = true;
+        // set numericText as result
+        // set cacheText to default
+        // set operatorText as none
     }
 }
