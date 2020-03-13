@@ -38,13 +38,15 @@ public class TextUpdaterFacade {
     }
 
     public void setNumericText(String numericText) {
-        this.numericText.setText(numericText);
+        String finalNumberText = cutDecimalFractionIfEqualsZero(numericText);
+        this.numericText.setText(finalNumberText);
     }
 
     public void updateNumericText(String text) {
         String currentNumericText = numericText.getText();
         String updatedNumberText = "0".equals(currentNumericText) ? text : currentNumericText + text;
-        numericText.setText(updatedNumberText);
+        String finalNumberText = cutDecimalFractionIfEqualsZero(updatedNumberText);
+        numericText.setText(finalNumberText);
     }
 
     public String getOperatorText() {
@@ -61,6 +63,16 @@ public class TextUpdaterFacade {
 
     public void setCachedText(String cachedText) {
         this.cachedText.setText(cachedText);
+    }
+
+    private String cutDecimalFractionIfEqualsZero(String number) {
+        if(number != null && number.length() >= 2) {
+            if(number.charAt(number.length() - 2) == '.' && number.charAt(number.length() - 1) == '0') {
+                String numberWithoutDecimalFraction = number.substring(0, number.length() - 2);
+                return numberWithoutDecimalFraction;
+            }
+        }
+        return number;
     }
 
 

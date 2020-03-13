@@ -57,9 +57,11 @@ public class ProxyCacheStore implements Store<String> {
 
     private void updateOperator(String operator) {
         String currentCache = cacheStore.getCurrent();
-        String currentCacheWithoutOperator = currentCache.substring(0, currentCache.length() - 1);
-        String cacheWithUpdatedOperator = currentCacheWithoutOperator + operator;
-        cacheStore.setCurrent(cacheWithUpdatedOperator);
+        if(currentCache.length() > 0) {
+            String currentCacheWithoutOperator = currentCache.substring(0, currentCache.length() - 1);
+            String cacheWithUpdatedOperator = currentCacheWithoutOperator + operator;
+            cacheStore.setCurrent(cacheWithUpdatedOperator);
+        }
     }
 
     private void saveEquationInHistory() {

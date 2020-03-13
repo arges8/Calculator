@@ -30,8 +30,11 @@ public class OutputCreatorFacade {
         } else {
             cache = operationWrapper.updateOperatorAndCacheStores(operator);
         }
-        textUpdaterFacade.setOperatorText(operator);
-        textUpdaterFacade.setCachedText(cache);
+
+        if(cache.length() > 0) {
+            textUpdaterFacade.setOperatorText(operator);
+            textUpdaterFacade.setCachedText(cache);
+        }
 
         operatorUsedRecently = true;
     }
@@ -44,8 +47,5 @@ public class OutputCreatorFacade {
         textUpdaterFacade.setNumericText(result);
 
         operatorUsedRecently = true;
-        // set numericText as result
-        // set cacheText to default
-        // set operatorText as none
     }
 }

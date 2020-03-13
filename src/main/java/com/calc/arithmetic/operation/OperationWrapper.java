@@ -29,11 +29,14 @@ public class OperationWrapper {
     }
 
     public String updateOperatorAndCacheStores(String operator) {
-        CalculatorOperator givenOperator = CalculatorOperator.getOperator(operator);
-        cacheTextToAdd.append(operator);
-        operatorStore.setCurrent(givenOperator);
-        String cacheFullTextToAdd = cacheTextToAdd.toString();
-        cacheStore.updateCurrent(cacheFullTextToAdd);
+        if(!areAllStoresDefault()) {
+            CalculatorOperator givenOperator = CalculatorOperator.getOperator(operator);
+            cacheTextToAdd.append(operator);
+            operatorStore.setCurrent(givenOperator);
+            String cacheFullTextToAdd = cacheTextToAdd.toString();
+            cacheStore.updateCurrent(cacheFullTextToAdd);
+        }
+
         String fullCache = cacheStore.getCurrent();
         clearCacheTextToAdd();
 
@@ -49,6 +52,15 @@ public class OperationWrapper {
         cacheStore.setDefault();
 
         return result;
+    }
+
+    private boolean areAllStoresDefault() {
+        if(     numberStore.getCurrent() == 0.0 &&
+                operatorStore.getCurrent() == CalculatorOperator.NONE &&
+                "".equals(cacheStore.getCurrent()))
+            return true;
+
+        return false;
     }
 
     private void clearCacheTextToAdd() {
