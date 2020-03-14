@@ -27,19 +27,19 @@ public class ButtonsController {
     }
 
     @FXML
-    private void handleNumberButton(ActionEvent event) {
+    void handleNumberButton(ActionEvent event) {
         String number = ((Button)event.getSource()).getText();
         outputCreatorFacade.createOutputForNumericButton(number);
     }
 
     @FXML
-    private void handleOperatorButton(ActionEvent event) {
+    void handleOperatorButton(ActionEvent event) {
         String operator = ((Button)event.getSource()).getText();
         outputCreatorFacade.createOutputForOperatorButton(operator);
     }
 
     @FXML
-    private void handleEqualsButton(ActionEvent event) {
+    void handleEqualsButton(ActionEvent event) {
         outputCreatorFacade.createOutputForEqualsButton();
     }
 }
