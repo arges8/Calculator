@@ -54,6 +54,12 @@ public class OperationWrapper {
         return result;
     }
 
+    public void setAllStoresDefault() {
+        numberStore.setDefault();
+        operatorStore.setDefault();
+        cacheStore.setDefault();
+    }
+
     private boolean areAllStoresDefault() {
         if(     numberStore.getCurrent() == 0.0 &&
                 operatorStore.getCurrent() == CalculatorOperator.NONE &&

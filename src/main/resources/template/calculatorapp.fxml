@@ -111,7 +111,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="120.0" prefWidth="157.0" text="C" GridPane.columnIndex="1">
+            <Button mnemonicParsing="false" onAction="#handleClearButton" prefHeight="120.0" prefWidth="157.0" text="C" GridPane.columnIndex="1">
                <font>
                   <Font size="28.0" />
                </font>

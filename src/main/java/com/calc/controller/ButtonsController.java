@@ -47,4 +47,9 @@ public class ButtonsController {
     void handleDotButton(ActionEvent event) {
         outputCreatorFacade.createOutputForDotButton();
     }
+
+    @FXML
+    void handleClearButton(ActionEvent event) {
+        outputCreatorFacade.createOutputForClearButton();
+    }
 }

@@ -54,7 +54,10 @@ public class OutputCreatorFacade {
     }
 
     public void createOutputForClearButton() {
-
+        operationWrapper.setAllStoresDefault();
+        textUpdaterFacade.setNumericText("0");
+        textUpdaterFacade.setOperatorText("");
+        textUpdaterFacade.setCachedText("");
     }
 
     public void createOutputForPlusMinusButton() {

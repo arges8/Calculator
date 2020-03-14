@@ -66,7 +66,8 @@ public class ProxyCacheStore implements Store<String> {
 
     private void saveEquationInHistory() {
         String currentCache = cacheStore.getCurrent();
-        cachedEquations.add(currentCache);
+        if(currentCache.contains("="))
+            cachedEquations.add(currentCache);
     }
 
     public List<String> getHistory() {
