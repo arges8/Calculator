@@ -10,3 +10,6 @@ Application is used for solving arithmetic operations, such as:
 * JavaFX
 * Maven
 
+## License
+icons taken from: https://icons8.com
+
