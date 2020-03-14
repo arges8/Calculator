@@ -42,4 +42,9 @@ public class ButtonsController {
     void handleEqualsButton(ActionEvent event) {
         outputCreatorFacade.createOutputForEqualsButton();
     }
+
+    @FXML
+    void handleDotButton(ActionEvent event) {
+        outputCreatorFacade.createOutputForDotButton();
+    }
 }

@@ -43,10 +43,11 @@ public class TextUpdaterFacade {
     }
 
     public void updateNumericText(String text) {
-        String currentNumericText = numericText.getText();
-        String updatedNumberText = "0".equals(currentNumericText) ? text : currentNumericText + text;
-        String finalNumberText = cutDecimalFractionIfEqualsZero(updatedNumberText);
-        numericText.setText(finalNumberText);
+        if(!ifDotThenAddItToNumericTextAndReturnTrue(text)) {
+            String currentNumericText = numericText.getText();
+            String updatedNumberText = "0".equals(currentNumericText) ? text : currentNumericText + text;
+            numericText.setText(updatedNumberText);
+        }
     }
 
     public String getOperatorText() {
@@ -73,6 +74,18 @@ public class TextUpdaterFacade {
             }
         }
         return number;
+    }
+
+    private boolean ifDotThenAddItToNumericTextAndReturnTrue(String text) {
+        if(".".equals(text)) {
+            String currentNumericText = numericText.getText();
+            if(!currentNumericText.contains(".")) {
+                String finalNumberText = currentNumericText + ".";
+                numericText.setText(finalNumberText);
+                return true;
+            }
+        }
+        return false;
     }
 
 

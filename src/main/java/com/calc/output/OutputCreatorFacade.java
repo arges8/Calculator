@@ -48,4 +48,16 @@ public class OutputCreatorFacade {
 
         operatorUsedRecently = true;
     }
+
+    public void createOutputForDotButton() {
+        textUpdaterFacade.updateNumericText(".");
+    }
+
+    public void createOutputForClearButton() {
+
+    }
+
+    public void createOutputForPlusMinusButton() {
+
+    }
 }
