@@ -82,8 +82,8 @@ public class TextUpdaterFacade {
             if(!currentNumericText.contains(".")) {
                 String finalNumberText = currentNumericText + ".";
                 numericText.setText(finalNumberText);
-                return true;
             }
+            return true;
         }
         return false;
     }
