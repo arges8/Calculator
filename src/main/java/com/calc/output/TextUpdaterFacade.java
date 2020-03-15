@@ -50,6 +50,15 @@ public class TextUpdaterFacade {
         }
     }
 
+    public void changeSignOfNumericText() {
+        String currentNumericText = numericText.getText();
+        if(!"0".equals(currentNumericText)) {
+            String updatedNumericText = currentNumericText.contains("-") ?
+                    currentNumericText.replaceFirst("-", "") : "-" + currentNumericText;
+            numericText.setText(updatedNumericText);
+        }
+    }
+
     public String getOperatorText() {
         return operatorText.getText();
     }

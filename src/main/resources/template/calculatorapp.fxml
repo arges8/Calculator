@@ -89,7 +89,7 @@
                   <Font size="28.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="222.0" text="+/-" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#handlePlusMinusOperator" prefHeight="60.0" prefWidth="222.0" text="+/-" GridPane.rowIndex="4">
                <font>
                   <Font size="28.0" />
                </font>
@@ -138,7 +138,7 @@
                </font></Text>
          </children>
       </StackPane>
-      <StackPane layoutX="84.0" layoutY="60.0" prefHeight="86.0" prefWidth="290.0" AnchorPane.bottomAnchor="339.0" AnchorPane.topAnchor="60.0">
+      <StackPane layoutX="88.0" layoutY="49.0" prefHeight="86.0" prefWidth="290.0" AnchorPane.bottomAnchor="350.0" AnchorPane.topAnchor="49.0">
          <children>
             <Text fx:id="numericText" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="285.20001220703125">
                <font>
@@ -147,7 +147,7 @@
             </Text>
          </children>
       </StackPane>
-      <StackPane layoutX="20.0" layoutY="56.0" prefHeight="86.0" prefWidth="68.0" AnchorPane.bottomAnchor="339.0" AnchorPane.topAnchor="60.0">
+      <StackPane layoutX="22.0" layoutY="49.0" prefHeight="86.0" prefWidth="68.0" AnchorPane.bottomAnchor="350.0" AnchorPane.topAnchor="49.0">
          <children>
             <Text fx:id="operatorText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="66.13672256469727">
                <font>

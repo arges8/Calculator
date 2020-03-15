@@ -61,6 +61,8 @@ public class OutputCreatorFacade {
     }
 
     public void createOutputForPlusMinusButton() {
-
+        if(!operatorUsedRecently) {
+            textUpdaterFacade.changeSignOfNumericText();
+        }
     }
 }

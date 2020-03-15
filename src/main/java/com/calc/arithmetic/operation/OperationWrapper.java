@@ -61,7 +61,7 @@ public class OperationWrapper {
     }
 
     private boolean areAllStoresDefault() {
-        if(     numberStore.getCurrent() == 0.0 &&
+        if(numberStore.getCurrent() == 0.0 &&
                 operatorStore.getCurrent() == CalculatorOperator.NONE &&
                 "".equals(cacheStore.getCurrent()))
             return true;
