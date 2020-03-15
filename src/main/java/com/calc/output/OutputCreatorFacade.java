@@ -53,6 +53,11 @@ public class OutputCreatorFacade {
         textUpdaterFacade.updateNumericText(".");
     }
 
+    public void createOutputForBackButton() {
+        if(!operatorUsedRecently)
+            textUpdaterFacade.removeLastDigitFromNumericText();
+    }
+
     public void createOutputForClearButton() {
         operationWrapper.setAllStoresDefault();
         textUpdaterFacade.setNumericText("0");
@@ -61,8 +66,7 @@ public class OutputCreatorFacade {
     }
 
     public void createOutputForPlusMinusButton() {
-        if(!operatorUsedRecently) {
+        if(!operatorUsedRecently)
             textUpdaterFacade.changeSignOfNumericText();
-        }
     }
 }

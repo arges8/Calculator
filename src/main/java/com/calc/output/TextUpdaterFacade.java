@@ -38,8 +38,8 @@ public class TextUpdaterFacade {
     }
 
     public void setNumericText(String numericText) {
-        String finalNumberText = cutDecimalFractionIfEqualsZero(numericText);
-        this.numericText.setText(finalNumberText);
+        String updatedNumberText = cutDecimalFractionIfEqualsZero(numericText);
+        this.numericText.setText(updatedNumberText);
     }
 
     public void updateNumericText(String text) {
@@ -47,6 +47,16 @@ public class TextUpdaterFacade {
             String currentNumericText = numericText.getText();
             String updatedNumberText = "0".equals(currentNumericText) ? text : currentNumericText + text;
             numericText.setText(updatedNumberText);
+        }
+    }
+
+    public void removeLastDigitFromNumericText() {
+        String currentNumericText = numericText.getText();
+        if(currentNumericText.length() > 1) {
+            String updatedNumberText = currentNumericText.substring(0, currentNumericText.length() - 1);
+            numericText.setText(updatedNumberText);
+        } else {
+            numericText.setText("0");
         }
     }
 

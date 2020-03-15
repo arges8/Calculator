@@ -99,7 +99,7 @@
                   <Font size="28.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="120.0" prefWidth="157.0" GridPane.columnIndex="2">
+            <Button mnemonicParsing="false" onAction="#handleBackButton" prefHeight="120.0" prefWidth="157.0" GridPane.columnIndex="2">
                <font>
                   <Font size="28.0" />
                </font>

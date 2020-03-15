@@ -51,6 +51,11 @@ public class ButtonsController {
     }
 
     @FXML
+    void handleBackButton(ActionEvent event) {
+        outputCreatorFacade.createOutputForBackButton();
+    }
+
+    @FXML
     void handleClearButton(ActionEvent event) {
         outputCreatorFacade.createOutputForClearButton();
     }
