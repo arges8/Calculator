@@ -1,6 +1,8 @@
 package com.calc.arithmetic.store;
 
-import com.calc.arithmetic.CalculatorOperator;
+import com.calc.arithmetic.operator.CalculatorOperator;
+import com.calc.arithmetic.operator.NoneOperator;
+import com.calc.arithmetic.operator.OperatorFactory;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -42,8 +44,8 @@ public class ProxyCacheStore implements Store<String> {
     }
 
     public void updateCurrent(String cacheToAdd) {
-        CalculatorOperator operator = CalculatorOperator.getOperator(cacheToAdd);
-        if(operator != CalculatorOperator.NONE)
+        CalculatorOperator operator = OperatorFactory.createOperator(cacheToAdd);
+        if(!(operator instanceof NoneOperator))
             updateOperator(cacheToAdd);
         else
             cacheStore.updateCurrent(cacheToAdd);

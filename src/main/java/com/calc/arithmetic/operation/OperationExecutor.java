@@ -1,30 +1,17 @@
 package com.calc.arithmetic.operation;
 
-import com.calc.arithmetic.CalculatorOperator;
+import com.calc.arithmetic.operator.CalculatorOperator;
+
+import java.util.LinkedList;
 
 class OperationExecutor {
 
     static double executeOperation(double numberStored, double secondNumber, CalculatorOperator operator) {
-        double resultOfOperation = 0;
+        LinkedList<Double> nums = new LinkedList<>();
+        nums.add(numberStored);
+        nums.add(secondNumber);
 
-        switch(operator) {
-            case DIVISION:
-                // TODO: catch dividing by 0
-                resultOfOperation = Operation.division(numberStored, secondNumber);
-                break;
-            case MULTIPLICATION:
-                resultOfOperation = Operation.multiplication(numberStored, secondNumber);
-                break;
-            case SUBTRACTION:
-                resultOfOperation = Operation.subtraction(numberStored, secondNumber);
-                break;
-            case ADDITION:
-                resultOfOperation = Operation.addition(numberStored, secondNumber);
-                break;
-            case NONE:
-                resultOfOperation = secondNumber;
-                break;
-        }
+        double resultOfOperation = operator.calculate(nums);
 
         return resultOfOperation;
     }

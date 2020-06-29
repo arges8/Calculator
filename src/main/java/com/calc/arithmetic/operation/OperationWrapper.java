@@ -1,6 +1,8 @@
 package com.calc.arithmetic.operation;
 
-import com.calc.arithmetic.*;
+import com.calc.arithmetic.operator.CalculatorOperator;
+import com.calc.arithmetic.operator.NoneOperator;
+import com.calc.arithmetic.operator.OperatorFactory;
 import com.calc.arithmetic.store.NumberStore;
 import com.calc.arithmetic.store.OperatorStore;
 import com.calc.arithmetic.store.ProxyCacheStore;
@@ -30,7 +32,7 @@ public class OperationWrapper {
 
     public String updateOperatorAndCacheStores(String operator) {
         if(!areAllStoresDefault()) {
-            CalculatorOperator givenOperator = CalculatorOperator.getOperator(operator);
+            CalculatorOperator givenOperator = OperatorFactory.createOperator(operator);
             cacheTextToAdd.append(operator);
             operatorStore.setCurrent(givenOperator);
             String cacheFullTextToAdd = cacheTextToAdd.toString();
@@ -62,7 +64,7 @@ public class OperationWrapper {
 
     private boolean areAllStoresDefault() {
         if(numberStore.getCurrent() == 0.0 &&
-                operatorStore.getCurrent() == CalculatorOperator.NONE &&
+                operatorStore.getCurrent() instanceof NoneOperator &&
                 "".equals(cacheStore.getCurrent()))
             return true;
 

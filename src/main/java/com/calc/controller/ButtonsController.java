@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
-import java.nio.file.attribute.AttributeView;
-
 public class ButtonsController {
 
     @FXML

@@ -1,13 +1,14 @@
 package com.calc.arithmetic.store;
 
-import com.calc.arithmetic.CalculatorOperator;
+import com.calc.arithmetic.operator.CalculatorOperator;
+import com.calc.arithmetic.operator.NoneOperator;
 
 public class OperatorStore implements Store<CalculatorOperator> {
     private static volatile OperatorStore instance;
     private CalculatorOperator currentOperator;
 
     private OperatorStore() {
-        currentOperator = CalculatorOperator.NONE;
+        currentOperator = new NoneOperator();
     }
 
     public static OperatorStore getInstance() {
@@ -32,6 +33,6 @@ public class OperatorStore implements Store<CalculatorOperator> {
 
     @Override
     public void setDefault() {
-        this.currentOperator = CalculatorOperator.NONE;
+        this.currentOperator = new NoneOperator();
     }
 }
