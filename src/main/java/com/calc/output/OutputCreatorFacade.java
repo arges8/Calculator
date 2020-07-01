@@ -69,4 +69,8 @@ public class OutputCreatorFacade {
         if(!operatorUsedRecently)
             textUpdaterFacade.changeSignOfNumericText();
     }
+
+    public void createOutputForHistoryButton() {
+        // TODO
+    }
 }

@@ -116,7 +116,7 @@
                   <Font size="28.0" />
                </font>
             </Button>
-            <Button layoutX="206.0" layoutY="10.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="157.0">
+            <Button layoutX="206.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleHistoryButton" prefHeight="120.0" prefWidth="157.0">
                <font>
                   <Font size="28.0" />
                </font>

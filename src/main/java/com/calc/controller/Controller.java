@@ -1,7 +1,7 @@
 package com.calc.controller;
 
-import com.calc.screen.ScreenLoaderService;
+import com.calc.screen.ScreenChangerService;
 
 public interface Controller {
-    void setScreenLoader(ScreenLoaderService screenLoader);
+    void setScreenChanger(ScreenChangerService screenChanger);
 }

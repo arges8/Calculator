@@ -1,5 +1,5 @@
 package com.calc;
-import com.calc.screen.ScreenLoaderService;
+import com.calc.screen.ScreenChangerService;
 import com.calc.screen.ScreenStoreServiceImpl;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -16,15 +16,15 @@ public class CalculatorApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ScreenLoaderService screenLoader = new ScreenLoaderService(new ScreenStoreServiceImpl());
-        screenLoader.loadScreen(CALCULATOR_FXML_FILE_PATH);
-        screenLoader.loadScreen(HISTORY_FXML_FILE_PATH);
-        screenLoader.setScreen(CALCULATOR_FXML_FILE_PATH);
+        ScreenChangerService screenChanger = new ScreenChangerService(new ScreenStoreServiceImpl());
+        screenChanger.loadScreen(CALCULATOR_FXML_FILE_PATH);
+        screenChanger.loadScreen(HISTORY_FXML_FILE_PATH);
+        screenChanger.setScreen(CALCULATOR_FXML_FILE_PATH);
 
 
         //Parent root = FXMLLoader.load(getClass().getResource("/template/calculatorapp.fxml"));
         Group root = new Group();
-        root.getChildren().addAll(screenLoader);
+        root.getChildren().addAll(screenChanger);
         stage.setTitle("Calculator");
         stage.setScene(new Scene(root));
         stage.resizableProperty().setValue(false);

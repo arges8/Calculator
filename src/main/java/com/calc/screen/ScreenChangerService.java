@@ -12,12 +12,11 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 
-public class ScreenLoaderService extends StackPane {
-    // this service is responsible for switching between the screens (calculator and history)
+public class ScreenChangerService extends StackPane {
 
     private ScreenStoreService screenStore;
 
-    public ScreenLoaderService(ScreenStoreService screenStore) {
+    public ScreenChangerService(ScreenStoreService screenStore) {
         this.screenStore = screenStore;
     }
 
@@ -25,7 +24,7 @@ public class ScreenLoaderService extends StackPane {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePath));
         Parent loadedScreen = loader.load();
         Controller controller = loader.getController();
-        controller.setScreenLoader(this);
+        controller.setScreenChanger(this);
         screenStore.addScreen(fxmlFilePath, loadedScreen);
     }
 
@@ -44,11 +43,11 @@ public class ScreenLoaderService extends StackPane {
 
     private void changeDisplayedScreenAndRunAnimations(String fxmlFilePath, DoubleProperty opacity) {
         Timeline fade = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-                new KeyFrame(new Duration(1000), event -> {
+                new KeyFrame(new Duration(100), event -> {
                     getChildren().remove(0);
                     getChildren().add(screenStore.getScreen(fxmlFilePath));
                     Timeline fadeIn = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                            new KeyFrame(new Duration(800), new KeyValue(opacity, 1.0)));
+                            new KeyFrame(new Duration(100), new KeyValue(opacity, 1.0)));
                     fadeIn.play();
                 }));
         fade.play();
@@ -58,7 +57,7 @@ public class ScreenLoaderService extends StackPane {
         setOpacity(0.0);
         getChildren().add(screenStore.getScreen(fxmlFilePath));
         Timeline fade = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
-                new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0)));
+                new KeyFrame(new Duration(100), new KeyValue(opacity, 1.0)));
         fade.play();
     }
 }

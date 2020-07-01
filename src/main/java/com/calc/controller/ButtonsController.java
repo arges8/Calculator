@@ -1,12 +1,14 @@
 package com.calc.controller;
 
-import com.calc.screen.ScreenLoaderService;
+import com.calc.screen.ScreenChangerService;
 import com.calc.output.OutputCreatorFacade;
 import com.calc.output.TextUpdaterFacade;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
+
+import static com.calc.constant.FxmlFilesPathsStore.HISTORY_FXML_FILE_PATH;
 
 public class ButtonsController implements Controller{
 
@@ -19,7 +21,7 @@ public class ButtonsController implements Controller{
     @FXML
     private Text cachedText;
 
-    private ScreenLoaderService screenLoaderService;
+    private ScreenChangerService screenChanger;
 
     private OutputCreatorFacade outputCreatorFacade;
 
@@ -66,12 +68,14 @@ public class ButtonsController implements Controller{
         outputCreatorFacade.createOutputForPlusMinusButton();
     }
 
+    @FXML
     void handleHistoryButton(ActionEvent event) {
-
+        outputCreatorFacade.createOutputForHistoryButton();
+        screenChanger.setScreen(HISTORY_FXML_FILE_PATH);
     }
 
     @Override
-    public void setScreenLoader(ScreenLoaderService screenLoader) {
-        this.screenLoaderService = screenLoader;
+    public void setScreenChanger(ScreenChangerService screenChanger) {
+        this.screenChanger = screenChanger;
     }
 }
