@@ -1,5 +1,6 @@
 package com.calc.controller;
 
+import com.calc.screen.ScreenLoaderService;
 import com.calc.output.OutputCreatorFacade;
 import com.calc.output.TextUpdaterFacade;
 import javafx.event.ActionEvent;
@@ -7,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 
-public class ButtonsController {
+public class ButtonsController implements Controller{
 
     @FXML
     private Text numericText;
@@ -17,6 +18,8 @@ public class ButtonsController {
 
     @FXML
     private Text cachedText;
+
+    private ScreenLoaderService screenLoaderService;
 
     private OutputCreatorFacade outputCreatorFacade;
 
@@ -59,7 +62,16 @@ public class ButtonsController {
     }
 
     @FXML
-    void handlePlusMinusOperator(ActionEvent event) {
+    void handlePlusMinusButton(ActionEvent event) {
         outputCreatorFacade.createOutputForPlusMinusButton();
+    }
+
+    void handleHistoryButton(ActionEvent event) {
+
+    }
+
+    @Override
+    public void setScreenLoader(ScreenLoaderService screenLoader) {
+        this.screenLoaderService = screenLoader;
     }
 }

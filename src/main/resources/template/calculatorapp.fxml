@@ -89,7 +89,7 @@
                   <Font size="28.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#handlePlusMinusOperator" prefHeight="60.0" prefWidth="222.0" text="+/-" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#handlePlusMinusButton" prefHeight="60.0" prefWidth="222.0" text="+/-" GridPane.rowIndex="4">
                <font>
                   <Font size="28.0" />
                </font>
