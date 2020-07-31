@@ -1,6 +1,9 @@
 package com.calc.screen;
 
 import com.calc.controller.Controller;
+import com.calc.screen.store.FxmlLoaderStoreService;
+import com.calc.screen.store.FxmlLoaderStoreServiceImpl;
+import com.calc.screen.store.ScreenStoreService;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -13,8 +16,8 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 
 public class ScreenChangerService extends StackPane {
-
     private ScreenStoreService screenStore;
+    private FxmlLoaderStoreService loaderStore = FxmlLoaderStoreServiceImpl.getInstance();
 
     public ScreenChangerService(ScreenStoreService screenStore) {
         this.screenStore = screenStore;
@@ -25,6 +28,7 @@ public class ScreenChangerService extends StackPane {
         Parent loadedScreen = loader.load();
         Controller controller = loader.getController();
         controller.setScreenChanger(this);
+        loaderStore.addLoader(fxmlFilePath, loader);
         screenStore.addScreen(fxmlFilePath, loadedScreen);
     }
 

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="485.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calc.controller.ButtonsController">
+<AnchorPane prefHeight="485.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calc.controller.CalculatorController">
    <children>
       <GridPane hgap="5.0" layoutX="23.0" layoutY="158.0" prefHeight="315.0" prefWidth="371.0" vgap="5.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="158.0">
         <columnConstraints>

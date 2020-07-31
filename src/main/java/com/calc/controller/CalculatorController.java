@@ -2,7 +2,6 @@ package com.calc.controller;
 
 import com.calc.screen.ScreenChangerService;
 import com.calc.output.OutputCreatorFacade;
-import com.calc.output.TextUpdaterFacade;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
@@ -10,7 +9,7 @@ import javafx.scene.text.Text;
 
 import static com.calc.constant.FxmlFilesPathsStore.HISTORY_FXML_FILE_PATH;
 
-public class ButtonsController implements Controller{
+public class CalculatorController implements Controller{
 
     @FXML
     private Text numericText;
@@ -25,10 +24,8 @@ public class ButtonsController implements Controller{
 
     private OutputCreatorFacade outputCreatorFacade;
 
-    @FXML
-    private void initialize() {
-        TextUpdaterFacade.init(numericText, operatorText, cachedText).setNumericText("0");
-        outputCreatorFacade = new OutputCreatorFacade();
+    public void setOutputCreatorFacade(OutputCreatorFacade outputCreatorFacade) {
+        this.outputCreatorFacade = outputCreatorFacade;
     }
 
     @FXML
@@ -77,5 +74,17 @@ public class ButtonsController implements Controller{
     @Override
     public void setScreenChanger(ScreenChangerService screenChanger) {
         this.screenChanger = screenChanger;
+    }
+
+    public Text getNumericText() {
+        return numericText;
+    }
+
+    public Text getOperatorText() {
+        return operatorText;
+    }
+
+    public Text getCachedText() {
+        return cachedText;
     }
 }

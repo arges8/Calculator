@@ -11,9 +11,7 @@ class OperationExecutor {
         nums.add(numberStored);
         nums.add(secondNumber);
 
-        double resultOfOperation = operator.calculate(nums);
-
-        return resultOfOperation;
+        return operator.calculate(nums);
     }
 
 }

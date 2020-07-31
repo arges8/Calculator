@@ -1,4 +1,4 @@
-package com.calc.screen;
+package com.calc.screen.store;
 
 import javafx.scene.Node;
 
