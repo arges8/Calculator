@@ -2,35 +2,35 @@ package com.calc.output;
 
 import javafx.scene.text.Text;
 
-public class TextUpdaterFacade {
-    private static volatile TextUpdaterFacade instance;
+public class CalculatorTextUpdaterFacade {
+    private static volatile CalculatorTextUpdaterFacade instance;
     private Text numericText;
     private Text operatorText;
     private Text cachedText;
 
-    private TextUpdaterFacade(Text numericText, Text operatorText, Text cachedText) {
+    private CalculatorTextUpdaterFacade(Text numericText, Text operatorText, Text cachedText) {
         this.numericText = numericText;
         this.operatorText = operatorText;
         this.cachedText = cachedText;
     }
 
-    public static TextUpdaterFacade getInstance() throws AssertionError {
+    public static CalculatorTextUpdaterFacade getInstance() throws AssertionError {
         if(instance != null)
             return instance;
 
-        throw new AssertionError("Instance of TextUpdaterFacade is not created");
+        throw new AssertionError("Instance of CalculatorTextUpdaterFacade is not created");
     }
 
-    public static TextUpdaterFacade init(Text numericText, Text operatorText, Text cachedText) throws AssertionError {
+    public static CalculatorTextUpdaterFacade init(Text numericText, Text operatorText, Text cachedText) throws AssertionError {
         if(instance == null) {
-            synchronized (TextUpdaterFacade.class) {
+            synchronized (CalculatorTextUpdaterFacade.class) {
                 if(instance == null) {
-                    instance = new TextUpdaterFacade(numericText, operatorText, cachedText);
+                    instance = new CalculatorTextUpdaterFacade(numericText, operatorText, cachedText);
                     return instance;
                 }
             }
         }
-        throw new AssertionError("Instance of TextUpdaterFacade is already created");
+        throw new AssertionError("Instance of CalculatorTextUpdaterFacade is already created");
     }
 
     public String getNumericText() {

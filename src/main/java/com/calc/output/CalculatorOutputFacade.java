@@ -3,15 +3,15 @@ package com.calc.output;
 import com.calc.arithmetic.operation.OperationWrapper;
 
 public class CalculatorOutputFacade {
-    private TextUpdaterFacade textUpdaterFacade = TextUpdaterFacade.getInstance();
+    private CalculatorTextUpdaterFacade calculatorTextUpdaterFacade = CalculatorTextUpdaterFacade.getInstance();
     private OperationWrapper operationWrapper = new OperationWrapper();
     private boolean operatorUsedRecently;
 
     public void createOutputForNumericButton(String number) {
         if(operatorUsedRecently)
-            textUpdaterFacade.setNumericText(number);
+            calculatorTextUpdaterFacade.setNumericText(number);
         else
-            textUpdaterFacade.updateNumericText(number);
+            calculatorTextUpdaterFacade.updateNumericText(number);
 
         operatorUsedRecently = false;
     }
@@ -19,15 +19,15 @@ public class CalculatorOutputFacade {
     public void createOutputForOperatorButton(String operator) {
         String cache;
         if(!operatorUsedRecently) {
-            String currentNumberText = textUpdaterFacade.getNumericText();
+            String currentNumberText = calculatorTextUpdaterFacade.getNumericText();
             cache = operationWrapper.executeOperationAndUpdateAllStores(currentNumberText, operator);
         } else {
             cache = operationWrapper.updateOperatorAndCacheStores(operator);
         }
 
         if(cache.length() > 0) {
-            textUpdaterFacade.setOperatorText(operator);
-            textUpdaterFacade.setCachedText(cache);
+            calculatorTextUpdaterFacade.setOperatorText(operator);
+            calculatorTextUpdaterFacade.setCachedText(cache);
         }
 
         operatorUsedRecently = true;
@@ -36,32 +36,32 @@ public class CalculatorOutputFacade {
     public void createOutputForEqualsButton() {
         createOutputForOperatorButton("");
         String result = operationWrapper.setAllStoresDefaultAndSaveCacheTextInHistory();
-        textUpdaterFacade.setCachedText("");
-        textUpdaterFacade.setOperatorText("");
-        textUpdaterFacade.setNumericText(result);
+        calculatorTextUpdaterFacade.setCachedText("");
+        calculatorTextUpdaterFacade.setOperatorText("");
+        calculatorTextUpdaterFacade.setNumericText(result);
 
         operatorUsedRecently = true;
     }
 
     public void createOutputForDotButton() {
-        textUpdaterFacade.updateNumericText(".");
+        calculatorTextUpdaterFacade.updateNumericText(".");
     }
 
     public void createOutputForBackButton() {
         if(!operatorUsedRecently)
-            textUpdaterFacade.removeLastDigitFromNumericText();
+            calculatorTextUpdaterFacade.removeLastDigitFromNumericText();
     }
 
     public void createOutputForClearButton() {
         operationWrapper.setAllStoresDefault();
-        textUpdaterFacade.setNumericText("0");
-        textUpdaterFacade.setOperatorText("");
-        textUpdaterFacade.setCachedText("");
+        calculatorTextUpdaterFacade.setNumericText("0");
+        calculatorTextUpdaterFacade.setOperatorText("");
+        calculatorTextUpdaterFacade.setCachedText("");
     }
 
     public void createOutputForPlusMinusButton() {
         if(!operatorUsedRecently)
-            textUpdaterFacade.changeSignOfNumericText();
+            calculatorTextUpdaterFacade.changeSignOfNumericText();
     }
 
     public void createOutputForHistoryButton() {
