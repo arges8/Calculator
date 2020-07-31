@@ -30,6 +30,6 @@ public class HistoryTextUpdaterFacade {
     public void updateTextArea(List<String> cachedEquations) {
         textArea.clear();
         for(String equation : cachedEquations)
-            textArea.appendText(equation);
+            textArea.appendText(equation + "\n");
     }
 }

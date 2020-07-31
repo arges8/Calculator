@@ -63,8 +63,4 @@ public class CalculatorOutputFacade {
         if(!operatorUsedRecently)
             calculatorTextUpdaterFacade.changeSignOfNumericText();
     }
-
-    public void createOutputForHistoryButton() {
-        // TODO
-    }
 }

@@ -60,10 +60,15 @@ public class ProxyCacheStore implements Store<String> {
     private void updateOperator(String operator) {
         String currentCache = cacheStore.getCurrent();
         if(currentCache.length() > 0) {
-            String currentCacheWithoutOperator = currentCache.substring(0, currentCache.length() - 1);
+            String currentCacheWithoutOperator = isCharacterANumber(currentCache.charAt(currentCache.length() - 1)) ?
+                    currentCache : currentCache.substring(0, currentCache.length() - 1);
             String cacheWithUpdatedOperator = currentCacheWithoutOperator + operator;
             cacheStore.setCurrent(cacheWithUpdatedOperator);
         }
+    }
+
+    private boolean isCharacterANumber(char c) {
+        return c >= '0' && c <= '9';
     }
 
     private void saveEquationInHistory() {
