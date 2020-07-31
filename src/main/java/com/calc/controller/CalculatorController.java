@@ -1,7 +1,8 @@
 package com.calc.controller;
 
+import com.calc.output.HistoryOutputFacade;
 import com.calc.screen.ScreenChangerService;
-import com.calc.output.OutputCreatorFacade;
+import com.calc.output.CalculatorOutputFacade;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.fxml.FXML;
@@ -22,52 +23,58 @@ public class CalculatorController implements Controller{
 
     private ScreenChangerService screenChanger;
 
-    private OutputCreatorFacade outputCreatorFacade;
+    private CalculatorOutputFacade calculatorOutputFacade;
 
-    public void setOutputCreatorFacade(OutputCreatorFacade outputCreatorFacade) {
-        this.outputCreatorFacade = outputCreatorFacade;
+    private HistoryOutputFacade historyOutputFacade;
+
+    public void setCalculatorOutputFacade(CalculatorOutputFacade calculatorOutputFacade) {
+        this.calculatorOutputFacade = calculatorOutputFacade;
+    }
+
+    public void setHistoryOutputFacade(HistoryOutputFacade historyOutputFacade) {
+        this.historyOutputFacade = historyOutputFacade;
     }
 
     @FXML
     void handleNumberButton(ActionEvent event) {
         String number = ((Button)event.getSource()).getText();
-        outputCreatorFacade.createOutputForNumericButton(number);
+        calculatorOutputFacade.createOutputForNumericButton(number);
     }
 
     @FXML
     void handleOperatorButton(ActionEvent event) {
         String operator = ((Button)event.getSource()).getText();
-        outputCreatorFacade.createOutputForOperatorButton(operator);
+        calculatorOutputFacade.createOutputForOperatorButton(operator);
     }
 
     @FXML
     void handleEqualsButton(ActionEvent event) {
-        outputCreatorFacade.createOutputForEqualsButton();
+        calculatorOutputFacade.createOutputForEqualsButton();
     }
 
     @FXML
     void handleDotButton(ActionEvent event) {
-        outputCreatorFacade.createOutputForDotButton();
+        calculatorOutputFacade.createOutputForDotButton();
     }
 
     @FXML
     void handleBackButton(ActionEvent event) {
-        outputCreatorFacade.createOutputForBackButton();
+        calculatorOutputFacade.createOutputForBackButton();
     }
 
     @FXML
     void handleClearButton(ActionEvent event) {
-        outputCreatorFacade.createOutputForClearButton();
+        calculatorOutputFacade.createOutputForClearButton();
     }
 
     @FXML
     void handlePlusMinusButton(ActionEvent event) {
-        outputCreatorFacade.createOutputForPlusMinusButton();
+        calculatorOutputFacade.createOutputForPlusMinusButton();
     }
 
     @FXML
     void handleHistoryButton(ActionEvent event) {
-        outputCreatorFacade.createOutputForHistoryButton();
+        historyOutputFacade.createOutputForHistoryButton();
         screenChanger.setScreen(HISTORY_FXML_FILE_PATH);
     }
 

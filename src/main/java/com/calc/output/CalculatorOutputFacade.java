@@ -2,16 +2,10 @@ package com.calc.output;
 
 import com.calc.arithmetic.operation.OperationWrapper;
 
-public class OutputCreatorFacade {
-    private TextUpdaterFacade textUpdaterFacade;
-    private OperationWrapper operationWrapper;
+public class CalculatorOutputFacade {
+    private TextUpdaterFacade textUpdaterFacade = TextUpdaterFacade.getInstance();
+    private OperationWrapper operationWrapper = new OperationWrapper();
     private boolean operatorUsedRecently;
-
-    public OutputCreatorFacade() {
-        textUpdaterFacade = TextUpdaterFacade.getInstance();
-        operationWrapper = new OperationWrapper();
-        operatorUsedRecently = false;
-    }
 
     public void createOutputForNumericButton(String number) {
         if(operatorUsedRecently)

@@ -1,7 +1,7 @@
 package com.calc.init;
 
 import com.calc.controller.CalculatorController;
-import com.calc.output.OutputCreatorFacade;
+import com.calc.output.CalculatorOutputFacade;
 import com.calc.output.TextUpdaterFacade;
 import com.calc.screen.store.FxmlLoaderStoreService;
 import com.calc.screen.store.FxmlLoaderStoreServiceImpl;
@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 
 import static com.calc.constant.FxmlFilesPathsStore.CALCULATOR_FXML_FILE_PATH;
 
-public class OutputInitializer implements Initializer {
+public class CalculatorOutputInitializer implements Initializer {
 
     @Override
     public boolean initialize() {
@@ -20,7 +20,7 @@ public class OutputInitializer implements Initializer {
         TextUpdaterFacade.init(controller.getNumericText(), controller.getOperatorText(), controller.getCachedText())
                 .setNumericText("0");
 
-        controller.setOutputCreatorFacade(new OutputCreatorFacade());
+        controller.setCalculatorOutputFacade(new CalculatorOutputFacade());
 
         return true;
     }

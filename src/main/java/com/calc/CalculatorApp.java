@@ -1,6 +1,7 @@
 package com.calc;
+import com.calc.init.HistoryOutputInitializer;
 import com.calc.init.Initializer;
-import com.calc.init.OutputInitializer;
+import com.calc.init.CalculatorOutputInitializer;
 import com.calc.screen.ScreenChangerService;
 import com.calc.screen.store.ScreenStoreServiceImpl;
 import javafx.application.Application;
@@ -18,8 +19,11 @@ public class CalculatorApp extends Application {
         ScreenChangerService screenChanger = new ScreenChangerService(new ScreenStoreServiceImpl());
         screenChanger.loadScreen(CALCULATOR_FXML_FILE_PATH);
         screenChanger.loadScreen(HISTORY_FXML_FILE_PATH);
-        Initializer initializer = new OutputInitializer();
-        initializer.initialize();
+        Initializer calculatorInitializer = new CalculatorOutputInitializer();
+        calculatorInitializer.initialize();
+        Initializer historyInitializer = new HistoryOutputInitializer();
+        historyInitializer.initialize();
+
         screenChanger.setScreen(CALCULATOR_FXML_FILE_PATH);
 
         Group root = new Group();
